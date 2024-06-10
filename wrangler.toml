@@ -1,0 +1,12 @@
+name = "test-do-ordering"
+main = "src/index.ts"
+compatibility_date = "2024-05-24"
+compatibility_flags = ["nodejs_compat"]
+
+[[durable_objects.bindings]]
+name = "MyDO"
+class_name = "MyDO"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["MyDO"]
