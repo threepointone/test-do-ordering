@@ -20,13 +20,18 @@ export class MyDO extends DurableObject {
   }
 }
 
+function getRandomRoomName() {
+  return Math.random().toString(36).substring(7);
+}
+
 export default {
   async fetch(
     request: Request,
     env: Env,
     ctx: ExecutionContext
   ): Promise<Response> {
-    const docId = env.MyDO.idFromName("my-do");
+    // let's do a random room everytime
+    const docId = env.MyDO.idFromName(getRandomRoomName());
     const stub = env.MyDO.get(docId);
     stub.someMethod1(); // note there's no await here
     stub.someMethod2(); // note there's no await here
